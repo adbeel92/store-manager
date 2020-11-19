@@ -22,13 +22,17 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'seedbank', '~> 0.5.0'
-gem 'pagy', '~> 3.5'
 
+gem 'activeadmin', '~> 2.8.1'
 gem 'devise', '~> 4.7.3'
+gem 'cancancan'
 
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
+
+gem 'aws-sdk-s3', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
