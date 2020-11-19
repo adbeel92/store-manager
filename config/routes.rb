@@ -2,5 +2,5 @@ Rails.application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  root 'active_admin/devise/sessions#new'
+  root 'admin/dashboard#index'
 end
