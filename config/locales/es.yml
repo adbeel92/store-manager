@@ -1,4 +1,11 @@
 es:
+  active_admin:
+    batch_actions:
+      labels:
+        make_request: 'Solicitar pedidos'
+        approve: 'Aprobar pedidos'
+        reject: 'Rechazar pedidos'
+        paid: 'Pagar pedidos'
   activerecord:
     models:
       category:

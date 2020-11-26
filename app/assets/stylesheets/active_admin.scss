@@ -28,6 +28,7 @@
   }
   &.approved {
     background: yellow;
+    color: #444;
   }
   &.paid {
     background: green;
@@ -37,6 +38,25 @@
   }
   &.rejected {
     background: red;
+  }
+}
+
+#titlebar_right .action_items .action_item a {
+  &.new_one {
+    background: #999;
+    text-shadow: none;
+  }
+  &.approved {
+    background: yellow;
+    text-shadow: none;
+  }
+  &.rejected {
+    background: red;
+    text-shadow: none;
+  }
+  &.paid {
+    background: green;
+    text-shadow: none;
   }
 }
 

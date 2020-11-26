@@ -13,6 +13,8 @@ class Ability
       can :manage, Category
       can :manage, Product
       can :manage, PurchaseOrder
+      can :make_request, PurchaseOrder
+      can :paid, PurchaseOrder
     end
   end
 end

@@ -12,4 +12,9 @@ class PurchaseOrder < ApplicationRecord
   accepts_nested_attributes_for :purchase_order_products, allow_destroy: true, reject_if: proc { |attrs| attrs['product_id'].blank? }
 
   validates :provider_id, :user_id, :total, :status, presence: true
+
+  def requested!
+    assign_attributes(requested_at: Time.current)
+    super
+  end
 end
