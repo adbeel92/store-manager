@@ -4,7 +4,7 @@ ActiveAdmin.register User do
   filter :sign_in_count
   filter :created_at
 
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :status, :first_name, :last_name, :role_id, :dni, :address, :phone, :password, :password_confirmation
 
   form do |f|
     f.inputs do
