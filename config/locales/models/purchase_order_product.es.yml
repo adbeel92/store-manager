@@ -1,0 +1,10 @@
+es:
+  activerecord:
+    attributes:
+      purchase_order_product:
+        product: Product
+        purchase_order: Pedido de compra
+        purchase_order_status: Estado del Pedido
+        purchase_price: Precio de compra
+        quantity: Cantidad
+        total_purchase_price: Total de compra

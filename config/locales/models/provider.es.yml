@@ -1,0 +1,18 @@
+es:
+  activerecord:
+    attributes:
+      provider:
+        address: Dirección
+        created_at: Creado en
+        description: Descripción
+        name: Nombre
+        phone_1: Teléfono 1
+        phone_2: Teléfono 2
+        ruc: RUC
+        status: Estado
+        statuses:
+          new_one: Nuevo
+          contacted: Contactado
+          active: Activo
+          inactive: Inactivo
+        updated_at: Actualizado en

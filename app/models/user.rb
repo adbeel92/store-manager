@@ -7,6 +7,14 @@ class User < ApplicationRecord
 
   belongs_to :role
 
+  has_many :purchase_orders
+
+  validates :first_name, :last_name, :role_id, :status, :email, :password, :password_confirmation, presence: true
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def admin?
     role.name == 'Admin'
   end

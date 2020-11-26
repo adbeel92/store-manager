@@ -1,0 +1,12 @@
+es:
+  activerecord:
+    attributes:
+      category:
+        created_at: Creado en
+        description: Descripción
+        name: Nombre
+        status: Estado
+        statuses:
+          active: Activo
+          inactive: Inactivo
+        updated_at: Actualizado en

@@ -8,4 +8,8 @@ class PurchaseOrder < ApplicationRecord
 
   has_many :purchase_order_products
   has_many :products, through: :purchase_order_products
+
+  accepts_nested_attributes_for :purchase_order_products, allow_destroy: true
+
+  validates :provider_id, :user_id, :total, :status, presence: true
 end

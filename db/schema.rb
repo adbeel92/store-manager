@@ -59,19 +59,27 @@ ActiveRecord::Schema.define(version: 2020_11_19_052719) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "measure_units", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "code"
     t.string "name", null: false
     t.bigint "category_id", null: false
-    t.string "measure_unit", null: false
+    t.bigint "measure_unit_id", null: false
     t.decimal "sale_price", precision: 8, scale: 2, default: "0.0", null: false
     t.integer "stock", default: 0, null: false
+    t.integer "custom_stock"
     t.text "description"
     t.string "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["code"], name: "index_products_on_code", unique: true
+    t.index ["measure_unit_id"], name: "index_products_on_measure_unit_id"
   end
 
   create_table "providers", force: :cascade do |t|
@@ -90,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_11_19_052719) do
     t.bigint "purchase_order_id", null: false
     t.bigint "product_id", null: false
     t.integer "quantity", default: 1, null: false
+    t.decimal "purchase_price", precision: 8, scale: 2, default: "0.0", null: false
     t.decimal "total_purchase_price", precision: 8, scale: 2, default: "0.0", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -158,6 +167,7 @@ ActiveRecord::Schema.define(version: 2020_11_19_052719) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "measure_units"
   add_foreign_key "purchase_order_products", "products"
   add_foreign_key "purchase_order_products", "purchase_orders"
   add_foreign_key "purchase_orders", "providers"

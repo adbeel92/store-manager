@@ -1,0 +1,5 @@
+MeasureUnit.create!(name: 'unidades')
+MeasureUnit.create!(name: 'kilogramos')
+MeasureUnit.create!(name: 'gramos')
+MeasureUnit.create!(name: 'litros')
+MeasureUnit.create!(name: 'mililitros')

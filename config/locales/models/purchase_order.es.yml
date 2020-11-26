@@ -1,0 +1,24 @@
+es:
+  activerecord:
+    attributes:
+      purchase_order:
+        created_at: Creado en
+        paid_at: Pagado en
+        provider: Proveedor
+        purchase_order_products: Productos del pedido
+        requested_at: Solicitado en
+        status: Estado
+        statuses:
+          new_one: Nuevo
+          requested: Solicitado
+          approved: Aprobado
+          rejected: Rechazado
+          paid: Pagado
+        tax: Impuestos
+        total: Total pagado
+        updated_at: Actualizado en
+        user: Creado por
+        voucher: Comprobante adjunto
+        voucher_number: Número del comprobante
+        voucher_series: Serie del comprobante
+        voucher_type: Tipo de comprobante

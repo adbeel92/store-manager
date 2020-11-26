@@ -1,0 +1,18 @@
+es:
+  activerecord:
+    attributes:
+      product:
+        category: Categoría
+        code: Código
+        created_at: Creado en
+        custom_stock: En stock personalizado
+        description: Descripción
+        measure_unit: Medido por
+        name: Nombre
+        sale_price: Precio de venta
+        status: Estado
+        statuses:
+          active: Activo
+          inactive: Inactivo
+        stock: En stock
+        updated_at: Actualizado en

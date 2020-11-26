@@ -1,0 +1,2 @@
+ActiveAdmin.register MeasureUnit do
+end
