@@ -7,7 +7,7 @@ ActiveAdmin.register Product do
   permit_params :category_id, :code, :name, :measure_unit_id, :sale_price, :custom_stock, :description, :status, :image
 
   form do |f|
-    f.semantic_errors
+    f.semantic_errors *f.object.errors.keys
     f.inputs 'Información' do
       f.input :category, as: :select
       f.input :code
@@ -26,6 +26,7 @@ ActiveAdmin.register Product do
   end
 
   index do
+    selectable_column
     id_column
     column :status do |product|
       status_tag product.status, label: Product.human_enum_name(:status, product.status)
@@ -74,5 +75,10 @@ ActiveAdmin.register Product do
     end
 
     active_admin_comments
+  end
+
+  collection_action :autocomplete, method: :get do
+    products = Product.where('LOWER(name) ILIKE ?', "%#{params[:q].to_s.downcase}%")
+    render json: products, each_serializer: ProductAutocompleteSerializer
   end
 end

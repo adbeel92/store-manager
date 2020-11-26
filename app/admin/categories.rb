@@ -5,7 +5,7 @@ ActiveAdmin.register Category do
   permit_params :status, :name, :description
 
   form do |f|
-    f.semantic_errors
+    f.semantic_errors *f.object.errors.keys
     f.inputs 'Información' do
       f.input :name
       f.input :description
@@ -15,6 +15,7 @@ ActiveAdmin.register Category do
   end
 
   index do
+    selectable_column
     id_column
     column :status do |category|
       status_tag category.status, label: Category.human_enum_name(:status, category.status)

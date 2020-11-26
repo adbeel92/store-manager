@@ -5,7 +5,7 @@ ActiveAdmin.register Provider do
   permit_params :name, :description, :ruc, :status, :address, :phone_1, :phone_2
 
   form do |f|
-    f.semantic_errors
+    f.semantic_errors *f.object.errors.keys
     f.inputs 'Información' do
       f.input :name
       f.input :description
@@ -21,6 +21,7 @@ ActiveAdmin.register Provider do
   end
 
   index do
+    selectable_column
     id_column
     column :status do |provider|
       status_tag provider.status, label: Provider.human_enum_name(:status, provider.status)

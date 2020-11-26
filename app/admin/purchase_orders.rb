@@ -23,7 +23,7 @@ ActiveAdmin.register PurchaseOrder do
     collection.paid
   end
 
-  permit_params :provider_id, :voucher_type, :voucher_series, :voucher_number, :total,
+  permit_params :provider_id, :voucher_type, :voucher_series, :voucher_number, :tax, :total,
                 purchase_order_products_attributes: [:product_id, :quantity, :purchase_price, :total_purchase_price, :_destroy]
 
   before_create do |product|
@@ -32,7 +32,7 @@ ActiveAdmin.register PurchaseOrder do
   end
 
   form do |f|
-    f.semantic_errors
+    f.semantic_errors *f.object.errors.keys
     f.inputs 'Información' do
       f.input :provider, as: :select
       f.input :voucher_type
@@ -44,7 +44,15 @@ ActiveAdmin.register PurchaseOrder do
     end
     f.inputs 'Detalle del pedido' do
       f.has_many :purchase_order_products, allow_destroy: true do |a|
-        a.input :product
+        a.input :product, as: :string, input_html: {
+          autocomplete: 'off',
+          value: a.object.product.try(:name),
+          data: {
+            url: autocomplete_admin_products_path,
+            behavior: 'autocomplete'
+          }
+        }
+        a.input :product_id, as: :hidden
         a.input :purchase_price
         a.input :quantity
         a.input :total_purchase_price
@@ -54,6 +62,7 @@ ActiveAdmin.register PurchaseOrder do
   end
 
   index do
+    selectable_column
     id_column
     column :status do|purchase_order|
       status_tag purchase_order.status, label: PurchaseOrder.human_enum_name(:status, purchase_order.status)

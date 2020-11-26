@@ -6,10 +6,10 @@ class PurchaseOrder < ApplicationRecord
 
   has_one_attached :voucher
 
-  has_many :purchase_order_products
+  has_many :purchase_order_products, dependent: :destroy
   has_many :products, through: :purchase_order_products
 
-  accepts_nested_attributes_for :purchase_order_products, allow_destroy: true
+  accepts_nested_attributes_for :purchase_order_products, allow_destroy: true, reject_if: proc { |attrs| attrs['product_id'].blank? }
 
   validates :provider_id, :user_id, :total, :status, presence: true
 end
