@@ -46,7 +46,7 @@ ActiveAdmin.register Provider do
     end
 
     panel 'Pedidos de compra' do
-      table_for provider.providers do
+      table_for provider.purchase_orders do
         column :user
         column :provider_products_qty
         column :total
