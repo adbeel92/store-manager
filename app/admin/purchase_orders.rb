@@ -24,7 +24,7 @@ ActiveAdmin.register PurchaseOrder do
   end
 
   permit_params :provider_id, :voucher_type, :voucher_series, :voucher_number, :tax, :total,
-                purchase_order_products_attributes: [:product_id, :quantity, :purchase_price, :total_purchase_price, :_destroy]
+                purchase_order_products_attributes: [:id, :product_id, :quantity, :purchase_price, :total_purchase_price, :_destroy]
 
   before_create do |product|
     @purchase_order.status = :new_one
@@ -56,6 +56,7 @@ ActiveAdmin.register PurchaseOrder do
         a.input :purchase_price
         a.input :quantity
         a.input :total_purchase_price
+        a.input :id, as: :hidden
       end
     end
     f.actions
