@@ -23,7 +23,7 @@ ActiveAdmin.register PurchaseOrder do
     collection.paid
   end
 
-  permit_params :provider_id, :voucher_type, :voucher_series, :voucher_number, :tax, :total,
+  permit_params :provider_id, :voucher_type, :voucher_series, :voucher_number, :tax, :total, :voucher,
                 purchase_order_products_attributes: [:id, :product_id, :quantity, :purchase_price, :total_purchase_price, :_destroy]
 
   before_create do |product|
